@@ -1,0 +1,16 @@
+{
+  "menuPages": [
+    {
+      "pageName": "Shopd",
+      "pageLink": "#shopas"
+    },
+    {
+      "pageName": "Lançamentos",
+      "pageLink": "#lancamentos"
+    },
+    {
+      "pageName": "Born in Chaos",
+      "pageLink": "#born-in-chaos"
+    }
+  ]
+}
