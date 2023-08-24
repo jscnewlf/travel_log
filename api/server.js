@@ -13,7 +13,7 @@ app.use('/images', express.static(__dirname + '/images'));
 
 app.get('/api/getData', async (req, res) => {
     try {
-      const data = await fs.readFile('dados.json', 'utf-8');
+      const data = await fs.readFile('./JSON/menu.json', 'utf-8');
       res.json(JSON.parse(data));
     } catch (error) {
       res.status(500).json({ error: 'Error reading data', details: error.message });
@@ -23,7 +23,7 @@ app.get('/api/getData', async (req, res) => {
   app.post('/api/updateData', async (req, res) => {
     try {
       const updatedData = JSON.stringify(req.body, null, 2);
-      await fs.writeFile('dados.json', updatedData, 'utf-8');
+      await fs.writeFile('./JSON/menu.json', updatedData, 'utf-8');
       res.json({ message: 'Data updated successfully' });
     } catch (error) {
       res.status(500).json({ error: 'Error updating data', details: error.message });

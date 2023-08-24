@@ -1,0 +1,24 @@
+{
+  "menuPages": [
+    {
+      "pageName": "Home",
+      "pageLink": "#home"
+    },
+    {
+      "pageName": "Guides",
+      "pageLink": "#guides"
+    },
+    {
+      "pageName": "Flights",
+      "pageLink": "#flights"
+    },
+    {
+      "pageName": "About",
+      "pageLink": "#about"
+    }
+  ],
+  "menuButton": {
+    "buttonContent": "Contact Us",
+    "buttonLink": "#contact-us"
+  }
+}

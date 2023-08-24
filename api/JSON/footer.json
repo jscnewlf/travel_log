@@ -1,0 +1,55 @@
+{
+    "footerLink": [
+        {
+            "pageName": "Home",
+            "pageLink": "#home"
+        },
+        {
+            "pageName": "About Us",
+            "pageLink": "#about-us"
+        },
+        {
+            "pageName": "My Travel Logs",
+            "pageLink": "#my-travel-logs"
+        },
+        {
+            "pageName": "Travels",
+            "pageLink": "#travels"
+        },
+        {
+            "pageName": "Promo Flights",
+            "pageLink": "#promo-flights"
+        },
+        {
+            "pageName": "Travel Routes",
+            "pageLink": "#travel-routes"
+        },
+        {
+            "pageName": "Recommendations",
+            "pageLink": "#recommendations"
+        },
+        {
+            "pageName": "Guides",
+            "pageLink": "#guides"
+        },
+        {
+            "pageName": "Blogs",
+            "pageLink": "#blogs"
+        },
+        {
+            "pageName": "Mission Statement",
+            "pageLink": "#mission-statement"
+        },
+        {
+            "pageName": "The Team",
+            "pageLink": "#the-team"
+        },
+        {
+            "pageName": "Contact Us",
+            "pageLink": "#contact-us"
+        }
+    ],
+    "footerCopyright": {
+        "textLine": "2021 - 2022 My Log Travels. All Rights Reserved."
+    }
+}
