@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('/api/getData');
+        const response = await axios.get('/api/menu/getData');
         setMenuItems(response.data.menuPages);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -25,7 +25,7 @@ export default function Home() {
 
   const handleMenuUpdate = async (updatedMenuItems: MenuItem[]) => {
     try {
-      const response = await axios.post('/api/updateData', { menuPages: updatedMenuItems });
+      const response = await axios.post('/api/menu/updateData', { menuPages: updatedMenuItems });
       console.log(response.data.message);
       setMenuItems(updatedMenuItems);
     } catch (error) {
