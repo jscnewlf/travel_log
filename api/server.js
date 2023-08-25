@@ -31,19 +31,19 @@ app.post('/api/menu/updateData', async (req, res) => {
 });
 
 //Rotas inspirational.json
-app.get('/api/nspirational/getData', async (req, res) => {
+app.get('/api/inspirational/getData', async (req, res) => {
   try {
-    const data = await fs.readFile('./JSON/nspirational.json', 'utf-8');
+    const data = await fs.readFile('./JSON/inspirational.json', 'utf-8');
     res.json(JSON.parse(data));
   } catch (error) {
     res.status(500).json({ error: 'Error reading data', details: error.message });
   }
 });
 
-app.post('/api/nspirational/updateData', async (req, res) => {
+app.post('/api/inspirational/updateData', async (req, res) => {
   try {
     const updatedData = JSON.stringify(req.body, null, 2);
-    await fs.writeFile('./JSON/nspirational.json', updatedData, 'utf-8');
+    await fs.writeFile('./JSON/inspirational.json', updatedData, 'utf-8');
     res.json({ message: 'Data updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Error updating data', details: error.message });
