@@ -16,9 +16,5 @@
       "pageName": "About",
       "pageLink": "#about"
     }
-  ],
-  "menuButton": {
-    "buttonContent": "Contact Us",
-    "buttonLink": "#contact-us"
-  }
+  ]
 }
