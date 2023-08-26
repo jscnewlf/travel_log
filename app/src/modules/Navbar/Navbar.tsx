@@ -21,7 +21,7 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className='flex flex-row justify-between pt-16 pb-36 items-center max-[999px]:pb-20 max-[650px]:justify-center'>
+            <nav className='flex flex-row justify-between pt-16 pb-36 items-center max-[999px]:pb-20 max-[650px]:justify-center max-[480px]:py-10'>
                 <ul className='flex flex-row gap-20 max-[999px]:gap-[10%] max-[650px]:gap-5'>
                     {menuData.map((menuItem, index) => (
                         <li className='first:font-extrabold hover:border-b hover:border-dark transition duration-1000' 

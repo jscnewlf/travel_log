@@ -49,8 +49,8 @@ export default function ArticleLine() {
                 <>
                     {principalArticle && (
                         <div className='flex flex-row w-[100%] justify-between mb-36 max-[999px]:flex-col-reverse max-[999px]:items-center max-[999px]:mb-10' >
-                            <div className='max-w-[30vw] flex flex-col justify-between max-[999px]:max-w-[50vw] max-[999px]:text-center'>
-                                <h2 className='font-cardo text-[5vw] font-black leading-[0.9] max-[999px]:mt-10 max-[999px]:mb-5'>{principalArticle.title}</h2>
+                            <div className='max-w-[30vw] flex flex-col justify-between max-[999px]:max-w-[50vw] max-[999px]:text-center max-[480px]:max-w-[80vw]'>
+                                <h2 className='font-cardo text-[5vw] font-black leading-[0.9] max-[999px]:mt-10 max-[999px]:mb-5 max-[480px]:text-[35px] max-[480px]:'>{principalArticle.title}</h2>
                                 <p>{principalArticle.subtitle}</p>
                                 <a className="text-[21px] bg-dark text-white border-dark py-1 w-[200px] block text-center rounded-md hover:opacity-90 max-[999px]:m-auto max-[999px]:mt-5" href="#reserve">Reserve Ticket</a>
                             </div>
