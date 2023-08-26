@@ -27,7 +27,7 @@ export default function InspirationalFrame() {
     return (
         <div>
             {inspirationalData.map((inspirationalItem, index) => (
-                <div>
+                <div key={index}>
                     <div className='flex flex-row  justify-between py-28 items-center'>
                         <div className='max-w-[35%] text-justify flex flex-col justify-between'>
                             <h2 className='text-white font-cardo font-extrabold text-5xl mb-16 text-start'>{inspirationalItem.mainTitle}</h2>

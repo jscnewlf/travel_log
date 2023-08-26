@@ -3,6 +3,10 @@ import Navbar from "../modules/Navbar/Navbar";
 import InspirationalFrame from "@/modules/InspirationalFrame/InspirationalFrame";
 import Footer from "@/modules/Footer/Footer";
 import ArticleLine from "@/components/ArticleLine/ArticleLine";
+import DepoimentLine from "@/components/DepoimentLine/DepoimentLine";
+
+
+
 export default function Home() {
   return (
     <div>
@@ -18,10 +22,16 @@ export default function Home() {
         </article>
       </div>
       <div className="bg-bgcream">
+        <div className="max-w-[85%] m-auto">
+          <DepoimentLine />
+        </div>
+      </div>
+      <div className="bg-[#c4c4c4]">
         <footer className="max-w-[85%] m-auto">
           <Footer />
         </footer>
       </div>
+
     </div>
   );
 };

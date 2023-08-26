@@ -48,7 +48,7 @@ export default function ArticleLine() {
             ) : (
                 <>
                     {principalArticle && (
-                        <div className='flex flex-row w-[100%] justify-between mb-36'>
+                        <div className='flex flex-row w-[100%] justify-between mb-36' >
                             <div className='max-w-[30vw] flex flex-col justify-between'>
                                 <h2 className='font-cardo text-[5vw] font-black leading-[0.9]'>{principalArticle.title}</h2>
                                 <p>{principalArticle.subtitle}</p>
@@ -58,7 +58,7 @@ export default function ArticleLine() {
                         </div>
                     )}
                     {limitedOtherArticles.map((articleItem, index) => (
-                        <div className='flex flex-col max-w-xs'>
+                        <div className='flex flex-col min-[1000px]:max-w-[26vw] min-[1400px]:max-w-[25vw]' key={index}>
                             <img className="object-cover" src={articleItem.image} alt={articleItem.title} />
                             <span className='w-16 h-1 bg-dark mt-6 mb-2'></span>
                             <h3 className='text-[30px] font-cardo font-extrabold mb-5'>{articleItem.title}</h3>

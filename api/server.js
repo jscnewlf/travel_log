@@ -102,6 +102,18 @@ app.get('/api/articles/getData', async (req, res) => {
   }
 });
 
+//Req Depoiments
+app.get('/api/depoiments/getData', async (req, res) => {
+  try {
+    const response = await axios.get('https://64e6b6a009e64530d1802db5.mockapi.io/api/depoiments');
+    const articles = response.data;
+    res.json(articles);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching data', details: error.message });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

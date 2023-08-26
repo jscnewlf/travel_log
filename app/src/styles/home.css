@@ -5,4 +5,31 @@
 *, body, a {
   font-family: "Lato";
   color: #232323;
+}
+
+.slick-initialized .slick-slide {
+  text-align: center;
+}
+
+button.slick-prev, button.slick-next, button.slick-prev:hover, button.slick-next:hover {
+  width: 62px;
+  height: 55px;
+  border-radius: 5px;
+  border: 2px solid #232323;
+  background-color: #e9e7e7 !important;
+  z-index: 99;
+}
+
+button.slick-arrow.slick-next {
+  right: -15px;
+  transform: rotate(180deg);
+  top: 42%;
+}
+
+button.slick-arrow.slick-prev {
+  left: -15px;
+}
+
+.slick-prev:before, .slick-next:before {
+  content: url(http://localhost:8080/images/arrow.png);
 }/*# sourceMappingURL=home.css.map */
