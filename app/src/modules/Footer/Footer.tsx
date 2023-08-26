@@ -42,7 +42,7 @@ export default function Navbar() {
                         </ul>
                     </div>
                 </div>
-                <div className='mt-10'>
+                <div className='mt-20 mb-10'>
                     {copyData && <p>{copyData.textLine}</p>}
                 </div>
             </div>

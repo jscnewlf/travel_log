@@ -1,3 +1,4 @@
+const axios = require('axios');
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs').promises;
@@ -87,6 +88,17 @@ app.post('/api/footer/updateData', async (req, res) => {
     res.json({ message: 'Data updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Error updating data', details: error.message });
+  }
+});
+
+//Req Articles
+app.get('/api/articles/getData', async (req, res) => {
+  try {
+    const response = await axios.get('https://64e6b6a009e64530d1802db5.mockapi.io/api/articles');
+    const articles = response.data;
+    res.json(articles);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching data', details: error.message });
   }
 });
 
