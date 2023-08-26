@@ -17,7 +17,7 @@ export default function Home() {
         </header>
       </div>
       <div className="bg-dark">
-        <article className="ml-[7.5%]">
+        <article className="ml-[7.5%] max-[790px]:ml-none max-[790px]:max-w-[85%] max-[790px]:m-auto">
           <InspirationalFrame />
         </article>
       </div>

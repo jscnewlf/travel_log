@@ -28,8 +28,8 @@ export default function InspirationalFrame() {
         <div>
             {inspirationalData.map((inspirationalItem, index) => (
                 <div key={index}>
-                    <div className='flex flex-row  justify-between py-28 items-center'>
-                        <div className='max-w-[35%] text-justify flex flex-col justify-between'>
+                    <div className='flex flex-row  justify-between py-28 items-center max-[790px]:flex-col max-[790px]:py-20'>
+                        <div className='max-w-[35%] text-justify flex flex-col justify-between max-[790px]:max-w-none'>
                             <h2 className='text-white font-cardo font-extrabold text-5xl mb-16 text-start'>{inspirationalItem.mainTitle}</h2>
                             <div>
                             <h4 className='text-white font-extrabold text-xl mb-3'>{inspirationalItem.secondaryTitle}</h4>
@@ -40,7 +40,7 @@ export default function InspirationalFrame() {
                                 <p className='text-white'>{inspirationalItem.tertiaryParagraph}</p>
                             </div>
                         </div>
-                        <div className='max-w-3xl  max-[1330px]:w-[55vw]'>
+                        <div className='max-w-3xl  max-[1330px]:w-[55vw] max-[790px]:max-w-none max-[790px]:w-full max-[790px]:mt-10'>
                             <img src={inspirationalItem.image} alt={inspirationalItem.imageAlt} />
                         </div>
                     </div>

@@ -68,10 +68,10 @@ export default function DepoimentLine() {
 
     return (
         <div className='py-16 max-w-5xl m-auto'>
-            <h2 className='font-cardo font-extrabold text-center text-[80px] max-w-2xl leading-[1] m-auto mb-14 min-[2198px]:max-w-3xl min-[2100px]:text-[4vw]'>Here's what they have to say...</h2>
+            <h2 className='font-cardo font-extrabold text-center text-[80px] max-w-2xl leading-[1] m-auto mb-14 min-[2198px]:max-w-3xl min-[2100px]:text-[4vw] max-[790px]:text-[10vw]'>Here's what they have to say...</h2>
             <Slider {...settings}>
                 {depoimentData.map((depoimentItem, index) => (
-                    <div className="border-2 border-solid border-dark rounded-lg py-16 px-3 w-[300px!important] m-auto h-96">
+                    <div className="border-2 border-solid border-dark rounded-lg py-16 px-3 w-[300px!important] m-auto h-96 max-[375px]:w-[250px!important]">
                         <img className="rounded-full m-auto" src={depoimentItem.avatar} alt="Avatar" />
                         <h4 className='font-extrabold text-xl my-5'>{depoimentItem.name}</h4>
                         <p className='text-center'>{depoimentItem.comment}</p>
