@@ -29,6 +29,11 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
 
     if (field === 'isPrincipal') {
       if (value === true) {
+  
+        if (checkedIndex !== -1) {
+          alert('Please update the previous checkbox before selecting a new one.');
+          return;
+        }
         setCheckedIndex(index);
       } else {
         setCheckedIndex(-1);
@@ -53,11 +58,11 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
       const selectedFile = selectedFileInput.files[0];
       await handleImageChange(index, selectedFile);
 
-      // Do not update the article until the image is successfully uploaded
       return;
     }
 
     onUpdate(updatedItems[index], updatedItems[index].id);
+    alert('Updated successfully');
   };
 
   const handleImageChange = async (index: number, file: File) => {
@@ -68,7 +73,6 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
       const response = await axios.post('http://localhost:8080/api/images/upload', formData);
       const imageUrl = response.data.path;
 
-      // Update the image URL and then update the article after the image upload is complete
       const updatedArticleItems = [...updatedItems];
       updatedArticleItems[index] = {
         ...updatedArticleItems[index],
@@ -92,48 +96,48 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
     <div>
       <div className='flex border-b-2 border-dark pb-2 mb-2'>
         <p className='w-10 pl-1 mr-5'>Item</p>
-        <p>Title</p>
+        <p className='w-[205px]'>Title</p>
         <p>Subtitle</p>
-        <p>Image</p>
-        <p>Principal</p>
       </div>
       <div>
         {articleItems.map((articleItem, index) => (
-          <form key={index} onSubmit={(e) => handleSubmit(e, index)}>
-            <div className='flex'>
-              <div>
-                <p>{index + 1}</p>
+          <form className="even:bg-neutral-200" key={index} onSubmit={(e) => handleSubmit(e, index)}>
+            <div className='flex py-2 rounded my-2 flex-wrap'>
+              <div className='w-10 text-center mr-5'>
+                <p className='font-lato'>{index + 1}</p>
               </div>
-              <div>
-                <input
+              <div className='mr-5'>
+                <input className='bg-transparent border-2 border-dark rounded pl-2'
                   type='text'
                   defaultValue={articleItem.title}
                   onChange={(e) => handleInputChange(index, 'title', e.target.value)}
                 />
               </div>
-              <div>
-                <input
+              <div className='mr-5'>
+                <input className='bg-transparent border-2 border-dark rounded pl-2'
                   type='text'
                   defaultValue={articleItem.subtitle}
                   onChange={(e) => handleInputChange(index, 'subtitle', e.target.value)}
                 />
               </div>
-              <div>
-                <input
+              <div className='mr-3'>
+                <input id="inputFile" className='w-[122px]'
                   type='file'
                   name={`image-${index}`}
                   accept='image/*'
                 />
               </div>
-              <div>
-                <input
-                  type='checkbox'
+              <div className='mr-5 flex items-center gap-2'>
+              <input
+                  type='checkbox' name="isPrincipal"
                   checked={index === checkedIndex && articleItem.isPrincipal}
                   onChange={(e) => handleInputChange(index, 'isPrincipal', e.target.checked)}
                 />
+                <label htmlFor="isPrincipal" className='mr-2'>Principal</label>
+                
               </div>
               <div>
-                <button type='submit'>Update</button>
+                <button className="bg-dark text-white border-dark py-1 w-[200px] block text-center rounded-md hover:opacity-90 " type='submit'>Update</button>
               </div>
             </div>
           </form>
