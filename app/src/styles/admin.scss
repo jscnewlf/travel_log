@@ -34,11 +34,11 @@ body {
       div form:nth-child(even) input {
         border-color: #6a6a6a;
       }
-      #inputFile::-webkit-file-upload-button {
+      input[type='file']::-webkit-file-upload-button {
         visibility: hidden;
       }
       
-      #inputFile::before {
+      input[type='file']::before {
         content: 'Upload an image';
         display: inline-block;
         background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
@@ -53,11 +53,11 @@ body {
         font-size: 10pt;
       }
       
-      #inputFile:hover::before {
+      input[type='file']:hover::before {
         border-color: black;
       }
       
-      #inputFile:active::before {
+      input[type='file']:active::before {
         background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
       }
       

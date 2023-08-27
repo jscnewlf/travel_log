@@ -18,7 +18,6 @@ export default function EditMenuItems({ menuItems, onUpdate }: EditMenuItemsProp
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>, index: number) => {
     event.preventDefault();
-
   };
 
   return (
