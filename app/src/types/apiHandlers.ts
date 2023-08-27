@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MenuItem, InspirationalItem, FooterItem } from './interfaces';
+import { MenuItem, InspirationalItem, FooterItem, ArticleItem } from './interfaces';
 
 export async function fetchMenuData() {
     try {
@@ -63,3 +63,28 @@ export async function updateFooterData(updatedFooterItems: FooterItem[]) {
         return false;
     }
 }
+
+export async function fetchArticleData() {
+    try {
+      const response = await axios.get(`/api/articles/getData`);
+      return response.data as ArticleItem[];
+    } catch (error) {
+      console.error('Error fetching:', error);
+      return [];
+    }
+  }
+  
+  export async function updateArticleData(updatedArticleItems: ArticleItem[]) {
+    try {
+      const updatePromises = updatedArticleItems.map(async (article) => {
+        const response = await axios.post(`/api/articles/updateData/${article.id}`, article);
+        console.log(response.data.message);
+      });
+  
+      await Promise.all(updatePromises);
+      return true;
+    } catch (error) {
+      console.error('Error updating:', error);
+      return false;
+    }
+  }

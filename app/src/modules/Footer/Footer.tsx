@@ -11,12 +11,10 @@ interface CopyItem {
 
 export default function Navbar() {
     const [footerData, setFooterData] = useState<FooterItem[]>([]);
-    const [copyData, setCopyData] = useState<CopyItem>();
     useEffect(() => {
         axios.get('/api/footer/getData')
             .then(response => {
                 setFooterData(response.data.footerLink);
-                setCopyData(response.data.footerCopyright);
             })
             .catch(error => {
                 console.error('Erro ao buscar dados do menu:', error);
@@ -43,7 +41,7 @@ export default function Navbar() {
                     </div>
                 </div>
                 <div className='mt-20 mb-10'>
-                    {copyData && <p>{copyData.textLine}</p>}
+                  <p>2021 - 2022 My Log Travels. All Rights Reserved.</p>
                 </div>
             </div>
         </div>

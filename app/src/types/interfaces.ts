@@ -17,3 +17,11 @@ export interface FooterItem {
     pageName: string;
     pageLink: string;
 }
+
+export interface ArticleItem {
+    id: number;
+    title: string;
+    subtitle: string;
+    image: string;
+    isPrincipal: boolean;
+}

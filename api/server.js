@@ -102,6 +102,18 @@ app.get('/api/articles/getData', async (req, res) => {
   }
 });
 
+app.post('/api/articles/updateData/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const response = await axios.put(`https://64e6b6a009e64530d1802db5.mockapi.io/api/articles/${id}`, req.body);
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating article', details: error.message });
+  }
+});
+
+
 //Req Depoiments
 app.get('/api/depoiments/getData', async (req, res) => {
   try {
