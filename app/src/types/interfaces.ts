@@ -25,3 +25,10 @@ export interface ArticleItem {
     image: string;
     isPrincipal: boolean;
 }
+
+export interface DepoimentItem {
+    id: number;
+    name: string;
+    avatar: string;
+    comment: string;
+}

@@ -5,14 +5,22 @@ import EditMenuItems from '../components/AdminEdit/EditMenu';
 import EditInspirationalItems from '@/components/AdminEdit/EditInspirational';
 import EditFooterItems from '@/components/AdminEdit/EditFooter';
 import EditArticleItems from '@/components/AdminEdit/EditArticles';
-import { fetchMenuData, updateMenuData, fetchInspirationalData, updateInspirationalData, fetchFooterData, updateFooterData, fetchArticleData, updateSingleArticleData } from '@/types/apiHandlers';
-import { MenuItem, InspirationalItem, FooterItem, ArticleItem } from '@/types/interfaces';
+import EditDepoimentItems from '@/components/AdminEdit/EditDepoiments';
+
+import { fetchMenuData, updateMenuData, 
+  fetchInspirationalData, updateInspirationalData, 
+  fetchFooterData, updateFooterData, 
+  fetchArticleData, updateSingleArticleData, 
+  fetchDepoimentData, updateSingleDepoimentData 
+} from '@/types/apiHandlers';
+import { MenuItem, InspirationalItem, FooterItem, ArticleItem, DepoimentItem } from '@/types/interfaces';
 
 export default function Admin() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [inspirationalItems, setInspirationalItems] = useState<InspirationalItem[]>([]);
   const [footerItems, setFooterItems] = useState<FooterItem[]>([]);
   const [articleItems, setArticleItems] = useState<ArticleItem[]>([]);
+  const [depoimentItems, setDepoimentItems] = useState<DepoimentItem[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,8 +33,8 @@ export default function Admin() {
       const fetchedFooterItems = await fetchFooterData();
       setFooterItems(fetchedFooterItems);
 
-      const fetchedArticleItems = await fetchArticleData();
-      setArticleItems(fetchedArticleItems);
+      const fetchedDepoimentItems = await fetchDepoimentData();
+      setDepoimentItems(fetchedDepoimentItems);
     }
 
     fetchData();
@@ -62,6 +70,18 @@ export default function Admin() {
     }
   };
 
+  const handleDepoimentUpdate = async (updatedDepoiment: DepoimentItem, id: number) => {
+    if (await updateSingleDepoimentData(id, updatedDepoiment)) {
+      const updatedDepoimentItems = depoimentItems.map((depoiment) => {
+        if (depoiment.id === id) {
+          return updatedDepoiment;
+        }
+        return depoiment;
+      });
+      setDepoimentItems(updatedDepoimentItems);
+    }
+  };
+
 
   return (
     <>
@@ -76,9 +96,11 @@ export default function Admin() {
         <Accordion title="ARTICLES">
           <EditArticleItems articleItems={articleItems} onUpdate={handleArticleUpdate} />
         </Accordion>
-
         <Accordion title="INSPIRATIONAL">
           <EditInspirationalItems inspirationalItems={inspirationalItems} onUpdate={handleInspirationalUpdate} />
+        </Accordion>
+        <Accordion title="DEPOIMENTS">
+          <EditDepoimentItems depoimentItems={depoimentItems} onUpdate={handleDepoimentUpdate} />
         </Accordion>
         <Accordion title="FOOTER">
           <EditFooterItems footerItems={footerItems} onUpdate={handleFooterUpdate} />

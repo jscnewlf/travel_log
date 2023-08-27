@@ -125,6 +125,17 @@ app.get('/api/depoiments/getData', async (req, res) => {
   }
 });
 
+app.put('/api/depoiments/updateData/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const response = await axios.put(`https://64e6b6a009e64530d1802db5.mockapi.io/api/depoiments/${id}`, req.body);
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating depoiment', details: error.message });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
