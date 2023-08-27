@@ -84,7 +84,7 @@ app.get('/api/footer/getData', async (req, res) => {
 app.post('/api/footer/updateData', async (req, res) => {
   try {
     const updatedData = JSON.stringify(req.body, null, 2);
-    await fs.writeFile('./JSON/menu.json', updatedData, 'utf-8');
+    await fs.writeFile('./JSON/footer.json', updatedData, 'utf-8');
     res.json({ message: 'Data updated successfully' });
   } catch (error) {
     res.status(500).json({ error: 'Error updating data', details: error.message });

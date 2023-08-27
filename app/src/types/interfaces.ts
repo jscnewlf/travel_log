@@ -1,9 +1,9 @@
 export interface MenuItem {
     pageName: string;
     pageLink: string;
-  }
-  
-  export interface InspirationalItem {
+}
+
+export interface InspirationalItem {
     mainTitle: string,
     secondaryTitle: string,
     secondaryParagraph: string,
@@ -11,4 +11,9 @@ export interface MenuItem {
     tertiaryParagraph: string,
     image: string,
     imageAlt: string
-  }
+}
+
+export interface FooterItem {
+    pageName: string;
+    pageLink: string;
+}

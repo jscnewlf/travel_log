@@ -1,14 +1,16 @@
-// admin.tsx
 import React, { useState, useEffect } from 'react';
 import Accordion from '@/components/Accordion/Accordion';
+//Edit + Types
 import EditMenuItems from '../components/AdminEdit/EditMenu';
 import EditInspirationalItems from '@/components/AdminEdit/EditInspirational';
-import { fetchMenuData, updateMenuData, fetchInspirationalData, updateInspirationalData } from '@/types/apiHandlers';
-import { MenuItem, InspirationalItem } from '@/types/interfaces';
+import EditFooterItems from '@/components/AdminEdit/EditFooter';
+import { fetchMenuData, updateMenuData, fetchInspirationalData, updateInspirationalData, fetchFooterData, updateFooterData } from '@/types/apiHandlers';
+import { MenuItem, InspirationalItem, FooterItem } from '@/types/interfaces';
 
 export default function Admin() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [inspirationalItems, setInspirationalItems] = useState<InspirationalItem[]>([]);
+  const [footerItems, setFooterItems] = useState<FooterItem[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +19,9 @@ export default function Admin() {
 
       const fetchedInspirationalItems = await fetchInspirationalData();
       setInspirationalItems(fetchedInspirationalItems);
+
+      const fetchedFooterItems = await fetchFooterData();
+      setFooterItems(fetchedFooterItems);
     }
 
     fetchData();
@@ -34,6 +39,12 @@ export default function Admin() {
     }
   };
 
+  const handleFooterUpdate = async (updatedFooterItems: FooterItem[]) => {
+    if (await updateFooterData(updatedFooterItems)) {
+      setFooterItems(updatedFooterItems);
+    }
+  };
+
   return (
     <>
       <div>
@@ -46,6 +57,9 @@ export default function Admin() {
         </Accordion>
         <Accordion title="INSPIRATIONAL">
           <EditInspirationalItems inspirationalItems={inspirationalItems} onUpdate={handleInspirationalUpdate} />
+        </Accordion>
+        <Accordion title="FOOTER">
+          <EditFooterItems footerItems={footerItems} onUpdate={handleFooterUpdate} />
         </Accordion>
       </div>
     </>
