@@ -1,13 +1,13 @@
 {
-    "inspirationalContent": [
-        {
-            "mainTitle": "Choose anywhere you'd like to be",
-            "secondaryTitle": "Lorem Ipsum dolor",
-            "secondaryParagraph": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre henderit in voluptate velit esse.",
-            "tertiaryTitle": "Lorem Ipsum dolor",
-            "tertiaryParagraph": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre henderit in voluptate velit esse.",
-            "image": "http://localhost:8080/images/Inspirational-image.png",
-            "imageAlt": "Men on top of mountain"
-        }
-    ]
+  "inspirationalContent": [
+    {
+      "mainTitle": "Choose anywhere you'd like to be",
+      "secondaryTitle": "Lorem Ipsum dolor",
+      "secondaryParagraph": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre henderit in voluptate velit esse.",
+      "tertiaryTitle": "Lorem Ipsum dolor",
+      "tertiaryParagraph": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repre henderit in voluptate velit esse.",
+      "image": "http://localhost:8080/images/Inspirational-image.png",
+      "imageAlt": "Men on top of mountain"
+    }
+  ]
 }

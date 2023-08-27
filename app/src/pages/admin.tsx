@@ -1,44 +1,53 @@
+// admin.tsx
 import React, { useState, useEffect } from 'react';
-import EditMenuItems from '../components/EditMenuItems';
-import axios from 'axios';
-
-interface MenuItem {
-  pageName: string;
-  pageLink: string;
-}
+import Accordion from '@/components/Accordion/Accordion';
+import EditMenuItems from '../components/AdminEdit/EditMenu';
+import EditInspirationalItems from '@/components/AdminEdit/EditInspirational';
+import { fetchMenuData, updateMenuData, fetchInspirationalData, updateInspirationalData } from '@/types/apiHandlers';
+import { MenuItem, InspirationalItem } from '@/types/interfaces';
 
 export default function Admin() {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [inspirationalItems, setInspirationalItems] = useState<InspirationalItem[]>([]);
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const response = await axios.get('/api/menu/getData');
-        setMenuItems(response.data.menuPages);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+      const fetchedMenuItems = await fetchMenuData();
+      setMenuItems(fetchedMenuItems);
+
+      const fetchedInspirationalItems = await fetchInspirationalData();
+      setInspirationalItems(fetchedInspirationalItems);
     }
 
     fetchData();
   }, []);
 
   const handleMenuUpdate = async (updatedMenuItems: MenuItem[]) => {
-    try {
-      const response = await axios.post('/api/menu/updateData', { menuPages: updatedMenuItems });
-      console.log(response.data.message);
+    if (await updateMenuData(updatedMenuItems)) {
       setMenuItems(updatedMenuItems);
-    } catch (error) {
-      console.error('Error updating data:', error);
+    }
+  };
+
+  const handleInspirationalUpdate = async (updatedInspirationalItems: InspirationalItem[]) => {
+    if (await updateInspirationalData(updatedInspirationalItems)) {
+      setInspirationalItems(updatedInspirationalItems);
     }
   };
 
   return (
-    <main >
-      <div >
-        <EditMenuItems menuItems={menuItems} onUpdate={handleMenuUpdate} />
+    <>
+      <div>
+        <div>
+          <h2>My Travels Log - Panel Admin</h2>
+          <a href="http://localhost:3000/" target="_target">Go to Website</a>
+        </div>
+        <Accordion title="MENU">
+          <EditMenuItems menuItems={menuItems} onUpdate={handleMenuUpdate} />
+        </Accordion>
+        <Accordion title="INSPIRATIONAL">
+          <EditInspirationalItems inspirationalItems={inspirationalItems} onUpdate={handleInspirationalUpdate} />
+        </Accordion>
       </div>
-     
-    </main>
+    </>
   );
 }
