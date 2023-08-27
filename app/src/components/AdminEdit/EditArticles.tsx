@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 interface ArticleItem {
   id: number;
@@ -11,18 +10,18 @@ interface ArticleItem {
 
 interface EditArticleItemsProps {
   articleItems: ArticleItem[];
-  onUpdate: (updatedArticleItems: ArticleItem[]) => void;
+  onUpdate: (updatedArticle: ArticleItem, id: number) => void;
 }
 
 export default function EditArticleItems({ articleItems, onUpdate }: EditArticleItemsProps) {
-    const handleInputChange = (index: number, field: keyof ArticleItem, value: string) => {
-        const updatedArticleItems = [...articleItems];
-        updatedArticleItems[index] = {
-          ...updatedArticleItems[index],
-          [field]: value,
-        };
-        onUpdate(updatedArticleItems);
-      };
+  const handleInputChange = (index: number, field: keyof ArticleItem, value: string) => {
+    const updatedArticleItems = [...articleItems];
+    updatedArticleItems[index] = {
+      ...updatedArticleItems[index],
+      [field]: value,
+    };
+    onUpdate(updatedArticleItems[index], updatedArticleItems[index].id);
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>, index: number) => {
     event.preventDefault();

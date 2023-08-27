@@ -5,7 +5,7 @@ import EditMenuItems from '../components/AdminEdit/EditMenu';
 import EditInspirationalItems from '@/components/AdminEdit/EditInspirational';
 import EditFooterItems from '@/components/AdminEdit/EditFooter';
 import EditArticleItems from '@/components/AdminEdit/EditArticles';
-import { fetchMenuData, updateMenuData, fetchInspirationalData, updateInspirationalData, fetchFooterData, updateFooterData, fetchArticleData, updateArticleData } from '@/types/apiHandlers';
+import { fetchMenuData, updateMenuData, fetchInspirationalData, updateInspirationalData, fetchFooterData, updateFooterData, fetchArticleData, updateSingleArticleData } from '@/types/apiHandlers';
 import { MenuItem, InspirationalItem, FooterItem, ArticleItem } from '@/types/interfaces';
 
 export default function Admin() {
@@ -50,11 +50,18 @@ export default function Admin() {
     }
   };
 
-  const handleArticleUpdate = async (updatedArticleItems: ArticleItem[]) => {
-    if (await updateArticleData(updatedArticleItems)) {
+  const handleArticleUpdate = async (updatedArticle: ArticleItem, id: number) => {
+    if (await updateSingleArticleData(id, updatedArticle)) {
+      const updatedArticleItems = articleItems.map((article) => {
+        if (article.id === id) {
+          return updatedArticle;
+        }
+        return article;
+      });
       setArticleItems(updatedArticleItems);
     }
   };
+
 
   return (
     <>
@@ -69,6 +76,7 @@ export default function Admin() {
         <Accordion title="ARTICLES">
           <EditArticleItems articleItems={articleItems} onUpdate={handleArticleUpdate} />
         </Accordion>
+
         <Accordion title="INSPIRATIONAL">
           <EditInspirationalItems inspirationalItems={inspirationalItems} onUpdate={handleInspirationalUpdate} />
         </Accordion>

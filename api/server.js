@@ -102,7 +102,7 @@ app.get('/api/articles/getData', async (req, res) => {
   }
 });
 
-app.post('/api/articles/updateData/:id', async (req, res) => {
+app.put('/api/articles/updateData/:id', async (req, res) => {
   const { id } = req.params;
 
   try {

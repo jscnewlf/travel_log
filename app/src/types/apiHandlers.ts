@@ -66,25 +66,21 @@ export async function updateFooterData(updatedFooterItems: FooterItem[]) {
 
 export async function fetchArticleData() {
     try {
-      const response = await axios.get(`/api/articles/getData`);
-      return response.data as ArticleItem[];
+        const response = await axios.get(`/api/articles/getData`);
+        return response.data as ArticleItem[];
     } catch (error) {
-      console.error('Error fetching:', error);
-      return [];
+        console.error('Error fetching:', error);
+        return [];
     }
-  }
-  
-  export async function updateArticleData(updatedArticleItems: ArticleItem[]) {
+}
+
+export async function updateSingleArticleData(id: number, updatedArticle: ArticleItem) {
     try {
-      const updatePromises = updatedArticleItems.map(async (article) => {
-        const response = await axios.post(`/api/articles/updateData/${article.id}`, article);
+        const response = await axios.put(`/api/articles/updateData/${id}`, updatedArticle);
         console.log(response.data.message);
-      });
-  
-      await Promise.all(updatePromises);
-      return true;
+        return true;
     } catch (error) {
-      console.error('Error updating:', error);
-      return false;
+        console.error('Error updating article:', error);
+        return false;
     }
-  }
+}
