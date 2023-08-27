@@ -14,11 +14,14 @@ interface EditArticleItemsProps {
   onUpdate: (updatedArticle: ArticleItem, id: number) => void;
 }
 
+
 export default function EditArticleItems({ articleItems, onUpdate }: EditArticleItemsProps) {
   const [checkedIndex, setCheckedIndex] = useState<number>(-1);
+  const [uploadingImages, setUploadingImages] = useState<boolean[]>(new Array(articleItems.length).fill(false));
+  const [updatedItems, setUpdatedItems] = useState<ArticleItem[]>(articleItems);
 
   const handleInputChange = (index: number, field: keyof ArticleItem, value: string | boolean) => {
-    const updatedArticleItems = [...articleItems];
+    const updatedArticleItems = [...updatedItems];
     updatedArticleItems[index] = {
       ...updatedArticleItems[index],
       [field]: value,
@@ -38,7 +41,23 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
       }
     }
 
-    onUpdate(updatedArticleItems[index], updatedArticleItems[index].id);
+    setUpdatedItems(updatedArticleItems);
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>, index: number) => {
+    event.preventDefault();
+
+    const selectedFileInput = event.currentTarget.querySelector<HTMLInputElement>(`input[type="file"][name="image-${index}"]`);
+    
+    if (selectedFileInput && selectedFileInput.files && selectedFileInput.files.length > 0) {
+      const selectedFile = selectedFileInput.files[0];
+      await handleImageChange(index, selectedFile);
+
+      // Do not update the article until the image is successfully uploaded
+      return;
+    }
+
+    onUpdate(updatedItems[index], updatedItems[index].id);
   };
 
   const handleImageChange = async (index: number, file: File) => {
@@ -46,17 +65,27 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
       const formData = new FormData();
       formData.append('image-article', file);
 
-      const response = await axios.post('http://localhost:8080/api/images/upload', formData); // Use the full URL
+      const response = await axios.post('http://localhost:8080/api/images/upload', formData);
       const imageUrl = response.data.path;
 
-      handleInputChange(index, 'image', imageUrl);
+      // Update the image URL and then update the article after the image upload is complete
+      const updatedArticleItems = [...updatedItems];
+      updatedArticleItems[index] = {
+        ...updatedArticleItems[index],
+        image: imageUrl,
+      };
+
+      setUpdatedItems(updatedArticleItems);
+      setUploadingImages((prevUploads) => {
+        const updatedUploads = [...prevUploads];
+        updatedUploads[index] = false;
+        return updatedUploads;
+      });
+
+      onUpdate(updatedArticleItems[index], updatedArticleItems[index].id);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
-  };
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>, index: number) => {
-    event.preventDefault();
   };
 
   return (
@@ -78,30 +107,23 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
               <div>
                 <input
                   type='text'
-                  value={articleItem.title}
+                  defaultValue={articleItem.title}
                   onChange={(e) => handleInputChange(index, 'title', e.target.value)}
                 />
               </div>
               <div>
                 <input
                   type='text'
-                  value={articleItem.subtitle}
+                  defaultValue={articleItem.subtitle}
                   onChange={(e) => handleInputChange(index, 'subtitle', e.target.value)}
                 />
               </div>
               <div>
                 <input
-                  type='file' name='image-article'
-                  
+                  type='file'
+                  name={`image-${index}`}
                   accept='image/*'
-                  onChange={(e) => {
-                    const selectedFile = e.target.files?.[0];
-                    if (selectedFile) {
-                      handleImageChange(index, selectedFile);
-                    }
-                  }}
                 />
-
               </div>
               <div>
                 <input
@@ -120,3 +142,6 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
     </div>
   );
 }
+
+
+

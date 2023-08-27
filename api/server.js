@@ -15,7 +15,7 @@ app.use('/images', express.static(__dirname + '/images'));
 const storage = multer.diskStorage({
   destination: path.join(__dirname, 'images'), 
   filename: (req, file, callback) => {
-    callback(null, 'image-article-' + Date.now() + path.extname(file.originalname));
+    callback(null, 'image-project-' + Date.now() + path.extname(file.originalname));
   },
 });
 
