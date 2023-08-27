@@ -33,6 +33,9 @@ export default function Admin() {
       const fetchedFooterItems = await fetchFooterData();
       setFooterItems(fetchedFooterItems);
 
+      const fetchedArticleItems = await fetchArticleData();
+      setArticleItems(fetchedArticleItems);
+
       const fetchedDepoimentItems = await fetchDepoimentData();
       setDepoimentItems(fetchedDepoimentItems);
     }
@@ -85,11 +88,12 @@ export default function Admin() {
 
   return (
     <>
-      <div>
-        <div>
-          <h2>My Travels Log - Panel Admin</h2>
+      <div className='px-10'>
+        <div className='text-center py-20'>
+          <h2 className='font-cardo font-black text-3xl mb-2 pt-10'>My Travels Log - Panel Admin</h2>
           <a href="http://localhost:3000/" target="_target">Go to Website</a>
         </div>
+        
         <Accordion title="MENU">
           <EditMenuItems menuItems={menuItems} onUpdate={handleMenuUpdate} />
         </Accordion>

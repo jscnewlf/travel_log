@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(225, 221, 216);
+}
+
 .accordion {
     border: 1px solid #ccc;
     margin: 10px;
@@ -20,9 +24,16 @@
       }
     }
   
-    .accordion-content {
+    .accordion-content:nth-child(even) {
       padding: 10px;
       background-color: #fff;
+
+      div form:nth-child(even) p {
+        color: #6a6a6a;
+      }
+      div form:nth-child(even) input {
+        border-color: #6a6a6a;
+      }
     }
   }
   

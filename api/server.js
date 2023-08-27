@@ -2,14 +2,32 @@ const axios = require('axios');
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs').promises;
+const multer = require('multer');
+const path = require('path');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const PORT = 8080;
-
 app.use('/images', express.static(__dirname + '/images'));
+
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, 'images'), 
+  filename: (req, file, callback) => {
+    callback(null, 'image-article-' + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/api/images/upload', upload.single('image-article'), (req, res) => {
+  const imagePath = '/images/' + req.file.filename;
+  console.log('Image saved to:', path.join(__dirname, 'images', req.file.filename));
+  res.json({ path: 'http://localhost:8080' + imagePath });
+});
+
+
 
 //Rotas menu.json
 app.get('/api/menu/getData', async (req, res) => {
