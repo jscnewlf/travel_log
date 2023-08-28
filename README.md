@@ -20,9 +20,7 @@ O projeto consiste em duas partes: **Landing Page** *http://localhost:3000/* e *
 
 Os blocos de artigos no header e o bloco de depoimentos foram alimentados usando o *MockAPI*. Já os blocos do menu, *inspirational* (bloco miolo) e footer são alimentados por arquivos *JSON* dentro da pasta backend.
 
-A ideia da tela admin é poder trocar livremente os conteúdos de texto e imagens. Não explorei muito a fundo requisições e manipulações mais elaboradas e uma tela adicional de autenticação por escolha, tempo e também não queria ir para utilização de BD.
-
-Basicamente é possível *LER* e *EDITAR* os conteúdos dos objetos criados. Segue as rotas e sua estruturação:
+A ideia da tela admin é poder trocar livremente os conteúdos de texto e imagens. Sendo assim é possível *LER* e *EDITAR* os conteúdos dos objetos criados tanto via MockAPI quanto JSON. Segue as rotas e sua estruturação:
 
 - MockAPI:
 **Articles**:
@@ -77,10 +75,7 @@ Basicamente é possível *LER* e *EDITAR* os conteúdos dos objetos criados. Seg
             pageName: string,
             pageLink: string
         }
-    ],
-    "footerCopyright": {
-        textLine: string
-    }
+    ]
 }
 ```
 ---
