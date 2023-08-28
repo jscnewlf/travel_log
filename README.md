@@ -107,10 +107,16 @@ max-[375px] //
 
 ## Instalação
 
-
+Front *(pasta /app)*:
 
 ```bash
-  npm install my-project
-  cd my-project
+    npm i
+    npm run dev
 ```
-    
+
+ Back *(pasta /api)*:
+
+```bash
+    npm i
+    npm start
+```   
