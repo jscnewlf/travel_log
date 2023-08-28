@@ -16,7 +16,7 @@ Desenvolver a Landing Page prototipada com o Front-End apartado do Back-End ou u
 - Multer
 
 ## Resumo do Projeto
-O projeto consiste em duas partes: **Landing Page** e **Tela Admin**
+O projeto consiste em duas partes: **Landing Page** *http://localhost:3000/* e **Tela Admin** *http://localhost:3000/admin*
 
 Os blocos de artigos no header e o bloco de depoimentos foram alimentados usando o *MockAPI*. Já os blocos do menu, *inspirational* (bloco miolo) e footer são alimentados por arquivos *JSON* dentro da pasta backend.
 
