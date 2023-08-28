@@ -93,14 +93,21 @@ max-[650px] //
 max-[480px] //
 max-[375px] //
 ## Demonstração
+- LP - Desktop
+<img src="demonstration\desktop-lp.gif">
 
-Insira um gif ou um link de alguma demonstração
-<img src="demonstration\desktop.gif">
+- LP - Tablet
+<img src="demonstration\tablet-lp.gif">
 
+- LP - Mobile
+<img src="demonstration\mobile-lp.gif">
+
+- Admin Page
+<img src="demonstration\admin.gif">
 
 ## Instalação
 
-Instale my-project com npm
+
 
 ```bash
   npm install my-project
