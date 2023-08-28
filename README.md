@@ -13,6 +13,7 @@ Desenvolver a Landing Page prototipada com o Front-End apartado do Back-End ou u
 - Express
 - Tailwind
 - React Slick
+- Multer
 
 ## Resumo do Projeto
 O projeto consiste em duas partes: **Landing Page** e **Tela Admin**
@@ -94,7 +95,7 @@ max-[375px] //
 ## Demonstração
 
 Insira um gif ou um link de alguma demonstração
-
+[![Watch the video](demonstration\desktop-lp.mp4)]
 
 ## Instalação
 

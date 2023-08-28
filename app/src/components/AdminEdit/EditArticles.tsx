@@ -29,7 +29,7 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
 
     if (field === 'isPrincipal') {
       if (value === true) {
-  
+
         if (checkedIndex !== -1) {
           alert('Please update the previous checkbox before selecting a new one.');
           return;
@@ -53,7 +53,7 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
     event.preventDefault();
 
     const selectedFileInput = event.currentTarget.querySelector<HTMLInputElement>(`input[type="file"][name="image-${index}"]`);
-    
+
     if (selectedFileInput && selectedFileInput.files && selectedFileInput.files.length > 0) {
       const selectedFile = selectedFileInput.files[0];
       await handleImageChange(index, selectedFile);
@@ -87,6 +87,7 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
       });
 
       onUpdate(updatedArticleItems[index], updatedArticleItems[index].id);
+      alert('Updated successfully');
     } catch (error) {
       console.error('Error uploading image:', error);
     }
@@ -128,13 +129,13 @@ export default function EditArticleItems({ articleItems, onUpdate }: EditArticle
                 />
               </div>
               <div className='mr-5 flex items-center gap-2'>
-              <input
-                  type='checkbox' name="isPrincipal"
-                  checked={index === checkedIndex && articleItem.isPrincipal}
+                <input
+                  type='checkbox'
+                  name={`isPrincipal-${index}`}
+                  checked={articleItem.isPrincipal}
                   onChange={(e) => handleInputChange(index, 'isPrincipal', e.target.checked)}
                 />
-                <label htmlFor="isPrincipal" className='mr-2'>Principal</label>
-                
+                <label htmlFor={`isPrincipal-${index}`} className='mr-2'>Principal</label>
               </div>
               <div>
                 <button className="bg-dark text-white border-dark py-1 w-[200px] block text-center rounded-md hover:opacity-90 " type='submit'>Update</button>
